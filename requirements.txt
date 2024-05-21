@@ -1,0 +1,12 @@
+fastapi==0.111.0
+requests==2.31.0
+python-dotenv==1.0.1
+pydantic_settings==2.2.1
+replicate==0.26.0
+scikit-optimize==0.10.1
+keras-tuner==1.4.7
+xlsxwriter==3.2.0
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.2.2
+supabase==2.4.5
