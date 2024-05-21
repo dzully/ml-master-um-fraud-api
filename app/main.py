@@ -13,7 +13,7 @@ load_dotenv()
 origins = [
     "http://localhost",
     "http://localhost:3005",
-    "https://fraud-analysis-w7g6j5rusa-as.a.run.app/"
+    "https://fraud-analysis-w7g6j5rusa-as.a.run.app"
 ]
 
 app.add_middleware(
