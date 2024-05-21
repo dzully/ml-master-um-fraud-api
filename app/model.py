@@ -15,16 +15,16 @@ from sklearn.tree import DecisionTreeClassifier
 from skopt import BayesSearchCV
 from supabase import Client
 
-with open('./model/imputed_means.json', 'r') as json_file:
+with open('app/model/imputed_means.json', 'r') as json_file:
     imputed_means = json.load(json_file)
 
 
 most_token_sent_encoder = joblib.load(
-    './model/encoder_ERC20 most sent token type.pkl')
+    'app/model/encoder_ERC20 most sent token type.pkl')
 most_token_recieve_encoder = joblib.load(
-    './model/encoder_ERC20_most_rec_token_type.pkl')
-scaler = joblib.load('./model/scaler.pkl')
-model = joblib.load('./model/Random Forest_model.joblib')
+    'app/model/encoder_ERC20_most_rec_token_type.pkl')
+scaler = joblib.load('app/model/scaler.pkl')
+model = joblib.load('app/model/Random Forest_model.joblib')
 
 
 def data_preprocess(df, imputed_means, most_token_sent_encoder, most_token_recieve_encoder, scaler):
