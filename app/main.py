@@ -4,8 +4,10 @@ from typing import Union
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from model import generate_excel
+from pydantic import BaseModel
 from supabase import Client, create_client
+
+from app.api import generate_upload_link_excel, generate_upload_local_excel
 
 app = FastAPI()
 load_dotenv()
@@ -34,7 +36,21 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/api/v1/{item_id}")
-def read_root(item_id: str):
-    generate_result = generate_excel(item_id, supabase)
+class LocalItem(BaseModel):
+    fileName: str
+
+
+@app.post("/api/v1/upload-local")
+def read_root(item: LocalItem):
+    generate_result = generate_upload_local_excel(item.fileName, supabase)
+    return {"fileName": generate_result}
+
+
+class Item(BaseModel):
+    link: str
+
+
+@app.post("/api/v1/upload-link")
+def read_root(item: Item):
+    generate_result = generate_upload_link_excel(item.link, supabase)
     return {"fileName": generate_result}
